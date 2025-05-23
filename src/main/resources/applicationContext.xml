@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="custCtrl" class="com.abhi.controller.CustomerController">
+        <constructor-arg name="customerService" ref="custServ"/>
+    </bean>
+
+    <bean id="custServ" class="com.abhi.service.CustomerServiceImpl">
+        <constructor-arg name="customerDao" ref="custDao"/>
+    </bean>
+
+    <bean id="custDao" class="com.abhi.dao.CustomerDaoImpl">
+        <constructor-arg name="dataSource" ref="dataSource1"/>
+    </bean>
+
+    <bean id="dataSource1" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql:///abhi_test"/>
+        <property name="username" value="root"/>
+        <property name="password" value="123456"/>
+    </bean>
+</beans>
