@@ -2,8 +2,7 @@ package com.abhi.test;
 
 import com.abhi.controller.CustomerController;
 import com.abhi.vo.CustomerVO;
-import org.springframework.beans.factory.support.DefaultListableBeanFactory;
-import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Scanner;
 
@@ -34,9 +33,7 @@ public class TestApp {
         customerVO.setRate(rate);
         customerVO.setTime(time);
 
-        DefaultListableBeanFactory factory = new DefaultListableBeanFactory();
-        XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(factory);
-        reader.loadBeanDefinitions("applicationContext.xml");
+        ClassPathXmlApplicationContext factory = new ClassPathXmlApplicationContext("applicationContext.xml");
         System.out.println("****Container Started****");
         CustomerController custCtrl = factory.getBean("custCtrl", CustomerController.class);
         try {

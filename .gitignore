@@ -58,4 +58,4 @@ Thumbs.db
 
 # Ignore everything inside any properties folder
 **/properties/
-
+/src/main/resources/application.properties
