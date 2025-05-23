@@ -3,8 +3,9 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
-   <import resource="controller-beans.xml"/>
-    <import resource="service-beans.xml"/>
-    <import resource="persistence-beans.xml"/>
+   <import resource="persistence-beans.xml"/>
+    <bean id="custServ" class="com.abhi.service.CustomerServiceImpl">
+        <constructor-arg name="customerDao" ref="custDao"/>
+    </bean>
 
 </beans>
