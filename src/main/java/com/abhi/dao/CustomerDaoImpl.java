@@ -1,16 +1,18 @@
 package com.abhi.dao;
 
 import com.abhi.bo.CustomerBO;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class CustomerDaoImpl implements ICustomerDao {
-    private DriverManagerDataSource dataSource;
 
-    public CustomerDaoImpl(DriverManagerDataSource dataSource) {
+
+    private DataSource dataSource;
+
+    public CustomerDaoImpl(DataSource dataSource) {
         this.dataSource = dataSource;
         System.out.println("CustomerDaoImpl :: One param--->" + dataSource.getClass().getName());
     }
@@ -40,3 +42,11 @@ public class CustomerDaoImpl implements ICustomerDao {
         return rowsInserted;
     }
 }
+/*DataSource(I) ===> javax.sql.DataSource;
+        |
+        |
+  DriverManagerDataSource ===> org.springframework.jdbc.datasource.DriverManagerDataSource
+        |
+        |
+   HikariDataSource(c) ====> com.zaxxer.hikari.HikariDataSource
+* */
