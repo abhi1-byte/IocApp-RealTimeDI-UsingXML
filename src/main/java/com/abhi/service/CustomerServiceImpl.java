@@ -3,14 +3,21 @@ package com.abhi.service;
 import com.abhi.bo.CustomerBO;
 import com.abhi.dao.CustomerDaoImpl;
 import com.abhi.dto.CustomerDTO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service(value = "service")
 public class CustomerServiceImpl implements ICustomerService {
-    private CustomerDaoImpl customerDao;
-
-    public CustomerServiceImpl(CustomerDaoImpl customerDao) {
-        this.customerDao = customerDao;
-        System.out.println("CustomerServiceImpl :: One param--->"+customerDao.getClass().getName());
+    static {
+        System.out.println("CustomerServiceImpl.class file is loaded..");
     }
+
+    public CustomerServiceImpl() {
+        System.out.println("CustomerServiceImpl.class object is instantiated...");
+    }
+
+    @Autowired
+    private CustomerDaoImpl customerDao;
 
     @Override
     public String calculateSimpleInterest(CustomerDTO customerDTO) throws Exception {

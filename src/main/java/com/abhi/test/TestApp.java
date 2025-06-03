@@ -35,7 +35,7 @@ public class TestApp {
 
         ClassPathXmlApplicationContext factory = new ClassPathXmlApplicationContext("applicationContext.xml");
         System.out.println("****Container Started****");
-        CustomerController custCtrl = factory.getBean("custCtrl", CustomerController.class);
+        CustomerController custCtrl = factory.getBean("controller", CustomerController.class);
         try {
             String result = custCtrl.processResult(customerVO);
             System.out.println(result);

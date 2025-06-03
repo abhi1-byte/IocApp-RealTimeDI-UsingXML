@@ -1,21 +1,26 @@
 package com.abhi.dao;
 
 import com.abhi.bo.CustomerBO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+@Repository(value = "dao")
 public class CustomerDaoImpl implements ICustomerDao {
-
-
-    private DataSource dataSource;
-
-    public CustomerDaoImpl(DataSource dataSource) {
-        this.dataSource = dataSource;
-        System.out.println("CustomerDaoImpl :: One param--->" + dataSource.getClass().getName());
+    static {
+        System.out.println("CustomerDaoImpl.class file is loaded..");
     }
+
+    public CustomerDaoImpl() {
+        System.out.println("CustomerDaoImpl.class object is instantiated...");
+    }
+
+    @Autowired
+    private DataSource dataSource;
 
     @Override
     public int save(CustomerBO customerBO) throws Exception {
